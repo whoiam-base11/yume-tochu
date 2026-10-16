@@ -43,7 +43,7 @@ export default function EpisodeRow({
       <div
         className={
           expanded
-            ? "grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3.5"
+            ? "grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] max-[820px]:grid-cols-[repeat(2,minmax(0,1fr))] gap-3.5"
             : "grid grid-flow-col gap-3.5 overflow-x-auto snap-x snap-mandatory pb-2.5 track-scroll"
         }
         style={

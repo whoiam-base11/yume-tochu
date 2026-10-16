@@ -24,6 +24,7 @@ export default function Hero({
 }) {
   const totalSlides = 1 + featured.length + 1; // brand + episodes + recruit
   const [current, setCurrent] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const go = useCallback(
     (n: number) => setCurrent((n + totalSlides) % totalSlides),
@@ -42,11 +43,18 @@ export default function Hero({
       <div
         className="flex slides-transition"
         style={{ transform: `translateX(-${current * 100}%)` }}
+        onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+        onTouchEnd={(e) => {
+          if (touchStartX === null) return;
+          const diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) go(current + (diff > 0 ? 1 : -1));
+          setTouchStartX(null);
+        }}
       >
         {/* Brand slide */}
         <div className="flex-none w-full relative min-h-[400px] overflow-hidden flex items-center bg-cream text-navy max-md:min-h-0">
           <div className="absolute left-1/2 top-1/2 w-[min(1100px,150vw)] aspect-square -translate-x-[58%] -translate-y-1/2 rounded-full border-[6px] border-navy border-r-transparent border-t-transparent opacity-90 pointer-events-none -rotate-[20deg]" />
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] py-11 grid grid-cols-[1.1fr_0.9fr] items-center gap-6 max-md:grid-cols-1 max-md:px-12 max-sm:px-10">
+          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] pt-11 pb-12 grid grid-cols-[1.1fr_0.9fr] items-center gap-6 max-md:grid-cols-1 max-md:px-12 max-sm:px-10">
             <div>
               <h2 className="font-mincho font-extrabold text-[clamp(56px,9vw,112px)] leading-none tracking-[0.02em] m-0 whitespace-nowrap max-sm:text-[clamp(44px,13vw,64px)]">
                 夢、途中。
@@ -105,13 +113,13 @@ export default function Hero({
               <span className="ghost right-[-2%] bottom-[-6%] text-[clamp(90px,17vw,230px)]">
                 {ghostName(ep)}
               </span>
-              <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] py-11 max-md:px-12 max-sm:px-10">
+              <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] pt-11 pb-12 max-md:px-12 max-sm:px-10">
                 <p className="font-black italic text-[clamp(22px,3vw,34px)] leading-[1.12] m-0 tracking-[0.01em] drop-shadow-[2px_3px_0_rgb(0_0_0/0.55)]">
                   YUME, TOCHU
                   <br />
                   PODCAST
                 </p>
-                <div className="w-14 h-[3px] my-3.5" style={{ background: accent }} />
+                <div className="w-14 h-[3px] mt-3.5 mb-[22px]" style={{ background: accent }} />
                 <h2 className="text-[clamp(24px,3.6vw,42px)] font-black leading-[1.35] m-0 mb-4.5 text-balance max-w-[16em]">
                   {ep.catchphrase}
                 </h2>
@@ -163,13 +171,13 @@ export default function Hero({
           <span className="ghost right-[-2%] bottom-[-6%] text-[clamp(90px,17vw,230px)]">
             CASTING
           </span>
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] py-11 max-md:px-12 max-sm:px-10">
+          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] pt-11 pb-12 max-md:px-12 max-sm:px-10">
             <p className="font-black italic text-[clamp(22px,3vw,34px)] leading-[1.12] m-0 tracking-[0.01em] drop-shadow-[2px_3px_0_rgb(0_0_0/0.55)]">
               YUME, TOCHU
               <br />
               PODCAST
             </p>
-            <div className="w-14 h-[3px] my-3.5 bg-red" />
+            <div className="w-14 h-[3px] mt-3.5 mb-[22px] bg-red" />
             <h2 className="text-[clamp(24px,3.6vw,42px)] font-black leading-[1.35] m-0 mb-4.5 text-balance max-w-[16em]">
               あなたの「夢、途中。」を
               <br />

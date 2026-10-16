@@ -33,7 +33,7 @@ export default function Header({
             <b className="font-mincho font-extrabold text-[22px] whitespace-nowrap">
               夢、途中。
             </b>
-            <small className="text-[9px] font-bold tracking-[0.14em] text-red self-end pb-1.5">
+            <small className="text-[9px] font-bold tracking-[0.14em] text-red self-end pb-1.5 max-[480px]:hidden">
               PODCAST
             </small>
           </Link>
@@ -64,7 +64,7 @@ export default function Header({
             <div className="max-w-[1200px] mx-auto px-5">
               <input
                 type="search"
-                placeholder="名前・夢・所属・お気に入りの曲で検索"
+                placeholder="名前・夢・所属・お気に入りの曲で検索（例：アナウンサー、サッカー、早稲田）"
                 className="w-full text-base p-2.5 px-3.5 border border-line rounded-md bg-panel text-fg font-sans"
                 onChange={(e) => onSearch?.(e.target.value)}
                 aria-label="検索"
@@ -95,6 +95,14 @@ export default function Header({
               <X className="w-6 h-6 stroke-fg" strokeWidth={2.2} />
             </button>
 
+            <a
+              href="#latest"
+              className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
+              onClick={() => setDrawerOpen(false)}
+            >
+              最新エピソード
+              <span className="text-red tracking-[-0.1em]">›››</span>
+            </a>
             {CATEGORIES.map((cat) => (
               <a
                 key={cat.id}
@@ -122,6 +130,22 @@ export default function Header({
               出演者募集
               <span className="text-red tracking-[-0.1em]">›››</span>
             </a>
+            <Link
+              href="/company"
+              className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
+              onClick={() => setDrawerOpen(false)}
+            >
+              代表メッセージ・会社概要
+              <span className="text-red tracking-[-0.1em]">›››</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
+              onClick={() => setDrawerOpen(false)}
+            >
+              お問い合わせ
+              <span className="text-red tracking-[-0.1em]">›››</span>
+            </Link>
             <a
               href={SHOW_URL}
               target="_blank"

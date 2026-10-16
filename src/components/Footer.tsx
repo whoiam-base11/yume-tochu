@@ -29,6 +29,12 @@ export default function Footer() {
           <a href="#recruit" className="no-underline text-muted hover:text-fg">
             出演者募集
           </a>
+          <Link href="/company" className="no-underline text-muted hover:text-fg">
+            会社概要
+          </Link>
+          <Link href="/contact" className="no-underline text-muted hover:text-fg">
+            お問い合わせ
+          </Link>
           <a
             href={SHOW_URL}
             target="_blank"

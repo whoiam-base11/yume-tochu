@@ -55,7 +55,7 @@ export default function EpisodeCard({
           </small>
         </div>
         {/* YUME, TOCHU text */}
-        <p className="absolute left-2.5 bottom-[22px] m-0 font-black italic text-[19px] leading-tight tracking-[0.01em] drop-shadow-[2px_3px_0_rgb(0_0_0/0.55)]">
+        <p className="card-yt absolute left-2.5 bottom-[22px] m-0 font-black italic text-[19px] leading-tight tracking-[0.01em] drop-shadow-[2px_3px_0_rgb(0_0_0/0.55)]">
           YUME, TOCHU
           <br />
           PODCAST
@@ -68,7 +68,7 @@ export default function EpisodeCard({
 
       {/* Info area */}
       <div className="p-2.5 pt-2.5 pb-0 flex flex-col flex-1">
-        <div className="text-[12.5px] font-black leading-[1.5] min-h-[3em] pb-2 border-b border-[#2C2C33] mb-2 text-balance">
+        <div className="card-catch text-[12.5px] font-black leading-[1.5] min-h-[3em] pb-2 border-b border-[#2C2C33] mb-2 text-balance">
           {episode.catchphrase}
         </div>
         <div
@@ -77,7 +77,7 @@ export default function EpisodeCard({
         >
           GUEST
         </div>
-        <div className="font-black text-[15px] leading-[1.3] flex flex-wrap items-baseline gap-x-2.5">
+        <div className="card-gname font-black text-[15px] leading-[1.3] flex flex-wrap items-baseline gap-x-2.5">
           {episode.name}
           {episode.nameRoman && (
             <span className="text-[0.8em]">{episode.nameRoman}</span>
