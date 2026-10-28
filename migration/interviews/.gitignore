@@ -1,0 +1,9 @@
+*
+!.gitignore
+!template.csv
+!README.md
+!prepare.py
+!inspect.mjs
+!import.mjs
+!update-spotify.mjs
+!update-hero.mjs

@@ -1,0 +1,452 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>夢、途中。 (Copy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@700;800&display=swap">
+<style>
+/* Layout: PODCAST STATION structure (logo bar → hero carousel → sideways rows → about/recruit/footer), dressed in the @yume.tochu post template: near-black panels, per-guest accent, italic "YUME, TOCHU PODCAST", GUEST label + affiliation pill, Spotify bar with >>>. Brand logo world (cream / navy mincho / spotlight yellow) for the opening slide and About. */
+:root{
+  --bg:#0E0E11;
+  --panel:#16161B;
+  --line:#2A2A31;
+  --fg:#F4F3F0;
+  --muted:#A3A2AA;
+  --red:#E0443E;          /* GUEST label / >>> default */
+  --cream:#F6F0E2;
+  --navy:#1D2A4C;
+  --spot:#F2CF73;
+  --spotify:#1ED760;
+  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.7}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--spot);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:20px}
+.it{font-family:var(--sans);font-weight:900;font-style:italic;letter-spacing:.01em;text-shadow:2px 3px 0 rgb(0 0 0 / .55)}
+
+/* header */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgb(14 14 17 / .94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:8px;height:60px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto;min-width:0}
+.logo .mic{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--fg);display:grid;place-items:center;flex:none}
+.logo .mic svg{width:12px;height:14px;fill:var(--fg)}
+.logo b{font-family:var(--mincho);font-weight:800;font-size:22px;white-space:nowrap}
+.logo small{font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--red);align-self:flex-end;padding-bottom:6px}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border:0;background:none;border-radius:8px;cursor:pointer}
+.icon-btn:hover{background:var(--panel)}
+.icon-btn svg{width:24px;height:24px;stroke:var(--fg);fill:none;stroke-width:2.2;stroke-linecap:round}
+.search{border-top:1px solid var(--line);padding-block:12px}
+.search input{width:100%;font:inherit;font-size:16px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg)}
+
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:50;display:flex;justify-content:flex-end;background:rgb(0 0 0 / .6)}
+.drawer nav{width:min(320px,86vw);height:100%;background:var(--panel);padding:calc(16px + env(safe-area-inset-top,0px)) 20px 24px;display:flex;flex-direction:column;overflow:auto}
+.drawer nav a{display:flex;justify-content:space-between;padding:13px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:700}
+.drawer nav a::after{content:"›››";color:var(--red);letter-spacing:-.1em}
+.drawer nav a:hover{color:var(--spot)}
+.drawer .close{align-self:flex-end}
+
+/* streaked photo-area background shared by posts and hero */
+.tint{background:
+  linear-gradient(115deg,transparent 0 22%,rgb(255 255 255 / .06) 22% 30%,transparent 30% 41%,rgb(255 255 255 / .04) 41% 45%,transparent 45%),
+  radial-gradient(120% 90% at 85% 15%,color-mix(in srgb,var(--k) 75%,#000) 0%,color-mix(in srgb,var(--k) 35%,#0b0b0e) 55%,#0b0b0e 100%)}
+.ghost{position:absolute;font-weight:900;font-style:italic;line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgb(255 255 255 / .16);white-space:nowrap;pointer-events:none;text-transform:uppercase}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:#000}
+.slides{display:flex;transition:transform .6s cubic-bezier(.6,.05,.25,1)}
+.slide{flex:0 0 100%;position:relative;min-height:400px;overflow:hidden;display:flex;align-items:center}
+.slide .in{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:44px 72px 48px}
+.slide .ghost{right:-2%;bottom:-6%;font-size:clamp(90px,17vw,230px)}
+.yt{font-size:clamp(22px,3vw,34px);line-height:1.12;margin:0}
+.uline{width:56px;height:3px;background:var(--k);margin:14px 0 22px}
+.slide h2{font-size:clamp(24px,3.6vw,42px);font-weight:900;line-height:1.35;margin:0 0 18px;text-wrap:balance;max-width:16em}
+.glabel{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--k)}
+.gname{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-weight:900;font-size:clamp(20px,2.4vw,28px);line-height:1.3}
+.gname span{font-size:.72em}
+.pill{display:inline-block;margin-top:6px;padding:2px 8px;font-size:11px;font-weight:700;line-height:1.6;background:var(--k);color:#fff;border-radius:1px}
+.desc{margin:12px 0 22px;max-width:34em;color:#D6D5DA;font-size:14px;line-height:1.75}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:999px;background:var(--fg);color:#111;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:14px}
+.btn:hover{background:#fff}
+.btn .sp{width:18px;height:18px}
+.btn.line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px currentColor}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+/* brand slide */
+.slide.brand{background:var(--cream);color:var(--navy)}
+.brand .in{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px}
+.brand .ring{position:absolute;inset:auto;left:50%;top:50%;width:min(1100px,150vw);aspect-ratio:1;transform:translate(-58%,-50%);border-radius:50%;border:6px solid var(--navy);border-right-color:transparent;border-top-color:transparent;opacity:.9;pointer-events:none;rotate:-20deg}
+.brand h2{white-space:nowrap;font-family:var(--mincho);font-weight:800;font-size:clamp(56px,9vw,112px);line-height:1;letter-spacing:.02em;margin:0;max-width:none}
+.brand .sub{font-weight:700;font-size:clamp(13px,1.5vw,16px);margin:18px 0 6px;border-bottom:2px solid var(--spot);display:inline-block;padding-bottom:4px}
+.brand .ytc{font-size:12px;letter-spacing:.42em;font-weight:500;margin:16px 0 22px}
+.brand .btn{background:var(--navy);color:var(--cream)}
+.brand svg.stage{width:100%;max-width:340px;justify-self:center}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:64px;border:0;background:none;cursor:pointer;color:#fff;mix-blend-mode:difference}
+.arrow svg{width:26px;height:46px;stroke:currentColor;fill:none;stroke-width:2}
+.arrow.prev{left:8px}.arrow.next{right:8px}
+.dots{display:flex;justify-content:center;gap:12px;padding:16px 0 0}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:#3A3A42;cursor:pointer;padding:0}
+.dots button[aria-current="true"]{background:var(--red)}
+
+/* rows */
+main{padding-block:8px 48px}
+.row{padding-top:34px}
+.row-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.row-head h3{font-weight:900;font-size:20px;margin:0;line-height:1.35}
+.row-head h3 small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--red)}
+.all{color:var(--fg);font-size:13px;font-weight:700;white-space:nowrap;background:none;border:0;cursor:pointer;padding:4px 0}
+.all b{color:var(--red);letter-spacing:-.1em;margin-left:4px}
+.all:hover{color:var(--spot)}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*14px)/4.2);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:#3A3A42 transparent}
+.track.grid{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-columns:auto;overflow:visible}
+
+/* post card (replica of the Instagram template) */
+.post{scroll-snap-align:start;display:flex;flex-direction:column;border:0;padding:0;background:#121216;text-align:left;cursor:pointer;min-width:0;overflow:hidden;transition:transform .25s}
+.post:hover{transform:translateY(-3px)}
+.post .ph{position:relative;aspect-ratio:1/0.82;overflow:hidden}
+.post .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.post .ph .ghost{right:-6%;top:10%;font-size:90px}
+.mini{position:absolute;left:10px;top:9px;display:flex;align-items:center;gap:5px;font-size:10px;font-weight:900}
+.mini i{width:14px;height:14px;border-radius:50%;border:1px solid #fff;display:grid;place-items:center}
+.mini i::before{content:"";width:4px;height:6px;border-radius:2px;background:#fff}
+.mini small{font-size:6px;color:var(--k);letter-spacing:.08em}
+.post .yt{position:absolute;left:10px;bottom:22px;font-size:19px}
+.post .uline{position:absolute;left:10px;bottom:12px;margin:0;width:40px;height:2px}
+.post .info{padding:10px 10px 0;display:flex;flex-direction:column;flex:1}
+.post .catch{font-size:12.5px;font-weight:900;line-height:1.5;min-height:3em;padding-bottom:8px;border-bottom:1px solid #2C2C33;margin-bottom:8px;text-wrap:balance}
+.post .glabel{font-size:8px}
+.post .gname{font-size:15px;gap:0 10px}
+.post .gname span{font-size:.8em}
+.post .pill{font-size:9px;padding:1px 6px;margin-top:4px;align-self:flex-start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spbar{display:flex;align-items:center;gap:6px;margin-top:auto;border-top:1px solid #2C2C33;padding:7px 0 8px;margin-top:10px}
+.spbar .sp{width:14px;height:14px;flex:none}
+.spbar b{font-size:9px;line-height:1.2}
+.spbar b small{display:block;font-size:6.5px;font-weight:400;color:var(--muted)}
+.spbar .chev{margin-left:auto;color:var(--k);font-weight:900;letter-spacing:-.15em;font-size:13px}
+
+/* about */
+.about{background:var(--cream);color:var(--navy);position:relative;overflow:hidden}
+.about .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;padding-block:56px}
+.about .eb{font-size:11px;font-weight:700;letter-spacing:.2em;color:#B5862B}
+.about h2{font-family:var(--mincho);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.4;margin:8px 0 18px;text-wrap:balance}
+.about p{margin:0 0 14px;max-width:34em;color:#33405F}
+.quote{font-family:var(--mincho);font-weight:800;font-size:22px;line-height:1.6;margin:22px 0 0;padding:4px 0 4px 16px;border-left:4px solid var(--spot)}
+.facts{margin:0;display:grid;align-content:start}
+.fact{display:grid;grid-template-columns:6.5em 1fr;gap:12px;padding:14px 0;border-bottom:1px solid rgb(29 42 76 / .18)}
+.fact dt{font-size:11px;font-weight:700;letter-spacing:.16em;color:#8B7A55;padding-top:3px}
+.fact dd{margin:0;font-weight:700;min-width:0}
+.fact dd small{display:block;font-weight:400;color:#4A5675}
+.fact a{color:var(--navy)}
+
+/* recruit */
+.recruit{background:#000;border-block:1px solid var(--line);--k:var(--red)}
+.recruit .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-block:40px;position:relative}
+.recruit h2{font-weight:900;font-size:clamp(22px,2.8vw,32px);margin:6px 0 0;line-height:1.35}
+.recruit p{margin:8px 0 0;max-width:36em;color:#D6D5DA}
+
+footer{padding-block:36px;background:var(--bg)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px}
+footer nav a{text-decoration:none;color:var(--muted)}
+footer nav a:hover{color:var(--fg)}
+footer .copy{width:100%;font-size:11px;letter-spacing:.3em;color:#6B6A72}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:60;background:rgb(0 0 0 / .72);display:grid;place-items:center;padding:16px}
+.sheet{background:#121216;max-width:820px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);position:relative}
+.sheet .post{cursor:default}
+.sheet .post:hover{transform:none}
+.sheet .post .ph{aspect-ratio:1/0.9}
+.sheet .post .yt{font-size:26px;bottom:26px}
+.sheet .post .ph .ghost{font-size:130px}
+.sheet .post .catch{font-size:15px}
+.sheet .post .gname{font-size:19px}
+.sheet .post .pill{font-size:11px;white-space:normal}
+.sheet .body{padding:24px;min-width:0;border-left:1px solid var(--line)}
+.sheet .body h4{font-size:12px;letter-spacing:.18em;color:var(--k);margin:0 0 10px}
+.sheet .body p{margin:0 0 16px;font-size:14px;color:#D6D5DA}
+.song{margin:0 0 20px;padding:12px 14px;background:#1C1C22;border-left:3px solid var(--k);font-size:14px}
+.song span{display:block;font-size:10px;letter-spacing:.18em;color:var(--muted)}
+.sheet .x{position:absolute;right:6px;top:6px;z-index:2;background:rgb(0 0 0 / .5)}
+.empty{color:var(--muted);padding:20px 0}
+
+@media (max-width:820px){
+  .track{grid-auto-columns:calc((100% - 14px)/1.75)}
+  .track.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .slide{min-height:0}
+  .slide .in{padding:36px 48px 40px}
+  .brand .in{grid-template-columns:1fr}
+  .brand svg.stage{max-width:130px;position:absolute;right:20px;bottom:14px;opacity:.95}
+  .about .wrap{grid-template-columns:1fr;gap:20px}
+  .sheet{grid-template-columns:1fr}
+  .sheet .body{border-left:0;border-top:1px solid var(--line)}
+}
+@media (max-width:480px){
+  .slide .in{padding:30px 40px 36px}
+  .brand svg.stage{max-width:96px;right:10px;bottom:10px}
+  .brand h2{font-size:clamp(44px,13vw,64px)}
+  .post .yt{font-size:15px}
+  .post .gname{font-size:13px}
+  .post .catch{font-size:11.5px}
+  .logo small{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sp" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1ED760"/><path d="M6 9.2c4-1.2 8.6-.9 12 1M6.6 12.4c3.4-1 7.2-.7 10.2 1M7.2 15.4c2.8-.8 5.8-.5 8.2.9" stroke="#0E0E11" stroke-width="1.7" fill="none" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top" id="top"><span class="mic"><svg viewBox="0 0 12 14"><rect x="3" y="0" width="6" height="9" rx="3"/><rect x="5.3" y="9" width="1.4" height="5"/></svg></span><b>夢、途中。</b><small>PODCAST</small></a>
+    <button class="icon-btn" id="searchBtn" aria-label="出演者を検索" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></button>
+    <button class="icon-btn" id="menuBtn" aria-label="メニューを開く"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+  <div class="search" id="searchBox" hidden>
+    <div class="wrap"><input id="q" type="search" placeholder="名前・夢・所属・お気に入りの曲で検索（例：アナウンサー、サッカー、早稲田）" aria-label="検索"></div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <nav aria-label="メニュー">
+    <button class="icon-btn close" id="closeMenu" aria-label="メニューを閉じる"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+    <div id="navCats"></div>
+    <a href="#about">番組について</a>
+    <a href="#recruit">出演者募集</a>
+    <a href="https://open.spotify.com/show/566JMxN11RnYzlPJKBJsdD" target="_blank" rel="noopener">Spotifyで聴く</a>
+    <a href="https://www.instagram.com/yume.tochu/" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+</div>
+
+<section class="hero" aria-roledescription="carousel" aria-label="ピックアップ">
+  <div class="slides" id="slides"></div>
+  <button class="arrow prev" id="prev" aria-label="前のスライド"><svg viewBox="0 0 28 48"><path d="M24 2 4 24l20 22"/></svg></button>
+  <button class="arrow next" id="next" aria-label="次のスライド"><svg viewBox="0 0 28 48"><path d="M4 2l20 22L4 46"/></svg></button>
+</section>
+<div class="dots" id="dots" role="tablist" aria-label="スライド選択"></div>
+
+<main class="wrap" id="rows"></main>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="eb">ABOUT</div>
+      <h2>挑戦する若者の、<br>リアルなストーリーを。</h2>
+      <p>「夢、途中。」は、挑戦する若者の夢や目標を聞き出して、リアルな声を発信するポッドキャストです。毎回ひとりのゲストと20分ノーカットで歓談し、収録は顔出しで行います。</p>
+      <p>届けたいのは“挑戦するきっかけ”。目標はあるのに動き出せていない人にも、まだ方向を探している人にも。誰かの“人生が動き出す瞬間”をつくれる場所を目指しています。</p>
+      <p class="quote">綺麗じゃなくて良い、<br>夢を語ることこそがカッコいい。</p>
+    </div>
+    <dl class="facts">
+      <div class="fact"><dt>FORMAT</dt><dd>20分ノーカット歓談<small>顔出し収録・毎回ゲスト1名</small></dd></div>
+      <div class="fact"><dt>HOST</dt><dd>平川拓虎<small>VISION「人と想いを繋ぎ、人生に最大のきっかけを創出する」</small></dd></div>
+      <div class="fact"><dt>BASE</dt><dd>岡山</dd></div>
+      <div class="fact"><dt>GUESTS</dt><dd id="guestCount"></dd></div>
+      <div class="fact"><dt>LISTEN</dt><dd><a href="https://open.spotify.com/show/566JMxN11RnYzlPJKBJsdD" target="_blank" rel="noopener">Spotify</a><small>出演者紹介は <a href="https://www.instagram.com/yume.tochu/" target="_blank" rel="noopener">Instagram @yume.tochu</a></small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="recruit" id="recruit">
+  <div class="wrap">
+    <div>
+      <div class="glabel">CASTING</div>
+      <h2>あなたの「夢、途中。」を聞かせてください。</h2>
+      <p>出演・収録したい方を待っています。夢が固まっていなくても大丈夫。InstagramのDMから気軽に連絡してください。</p>
+    </div>
+    <a class="btn" href="https://www.instagram.com/yume.tochu/" target="_blank" rel="noopener">InstagramでDMする</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="mic"><svg viewBox="0 0 12 14"><rect x="3" y="0" width="6" height="9" rx="3"/><rect x="5.3" y="9" width="1.4" height="5"/></svg></span><b>夢、途中。</b></a>
+    <nav aria-label="フッター">
+      <a href="#latest">エピソード</a><a href="#about">番組について</a><a href="#recruit">出演者募集</a>
+      <a href="https://open.spotify.com/show/566JMxN11RnYzlPJKBJsdD" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://www.instagram.com/yume.tochu/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <div class="copy">YUME, TOCHU.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="エピソード詳細">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script>
+const SHOW="https://open.spotify.com/show/566JMxN11RnYzlPJKBJsdD";
+const K={red:"#D8423F",orange:"#E07A35",amber:"#D99A33",gold:"#CFAE3A",blue:"#3E66CF",sky:"#3A9CC9",navy:"#2F4FA8",purple:"#7C55C9",pink:"#D3457A",teal:"#3C9592",tan:"#C3A06A",rose:"#B4506A"};
+/* 投稿順（新しい順）。img: 写真のURLかdata URIを入れるとカバーに表示されます */
+const G=[
+ {n:"鈴蘭 りあ",r:"Ria Suzuran",k:"orange",cat:"show",c:"華がある、でも頭もある。",t:"上智大学｜ミスソフィアファイナリスト",d:"美少女図鑑本部に所属し、モデルとして活動中。幅広い役柄をこなす俳優として、世界観を創りたい。演技力とSNS発信を磨き、事務所に認められる俳優を目指す。",id:"ria_suzuran",p:"Dd4_sQ0EzLc",s:"世界はあなたに笑いかけている",a:"Little Glee Monster"},
+ {n:"野田 侑希",r:"Yuki Noda",k:"red",cat:"sports",c:"子どもたちの、憧れの指導者になる。",t:"ラオス1部リーグ｜最年少ヘッドコーチ",d:"中3で見た欧州サッカーの監督に憧れ、指導者を志す。高校から海外へ渡り、学生コーチとして経験を積む。現在はラオス1部リーグ最年少ヘッドコーチとして奮闘中。",id:"yukinoda.06",p:"Dd0aKdwmHU-",s:"カウンティング・スターズ",a:"ワンリパブリック"},
+ {n:"水谷 淳",r:"Jun Mizutani",k:"rose",cat:"show",c:"地上波ドラマの出演を目指す。",t:"俳優｜映画・ドラマ・舞台",d:"鉄道好きが高じて、TikTokライブ配信も毎晩実施中。目標は、舞台公演にファン100人を集めること。アルバイトを卒業し、表現活動に専念できる環境を目指す。",id:"junferret",p:"Ddz-3SNGN4B",s:"銀河鉄道999",a:"ゴダイゴ"},
+ {n:"赤平 知優",r:"Chihiro Akahira",k:"pink",cat:"media",c:"アナウンサーを目指し、発信を磨く。",t:"早稲田大学｜ミスサークルコンテスト2026出場中",d:"モデル・メディアを中心に、マルチに活動中。Showroom配信で日々の表現力・発信力を磨いている。TGC取材記事の執筆など、ライターとしても活動。",id:"wc2026_chihiro",p:"DdsDKuJk2xh",s:"Night Diver",a:"三浦春馬"},
+ {n:"矢野 愛佳",r:"Manaka Yano",k:"blue",cat:"media",c:"言葉で、人と人とを繋ぐ。",t:"早稲田大学｜Scketto学生リポーター",d:"早稲田大学1年生。Scketto8期の学生リポーター。防災士の資格を持ち、幅広く活動中。幼い頃から得意な文章力を武器に、言葉を届ける。",id:"yano.manaka",p:"DdnEh8SmLV0",s:"TRUMAN",a:"礼賛"},
+ {n:"玉井 芳果",r:"Honoka Tamai",k:"amber",cat:"media",c:"人は、自分が思うより可能性がある。",t:"立命館大学｜アナウンス部",d:"高校時代から「BIWAKONA」副社長など様々な挑戦を経験。大学のアナウンス部で司会やリポーターとして「伝える」活動。挑戦する人の背中を押すアナウンサー・司会者を目指す。",id:"honoka_tamai",p:"DdimiyomH4k",s:"自分革命",a:"SHISHAMO"},
+ {n:"田中 はるの",r:"Haruno Tanaka",k:"gold",cat:"show",c:"表現を通じて、夢や希望を届けたい。",t:"法政大学｜Miss Campus Collection 2025 East",d:"法政大学に在学しながら、女優・表現者として活動。映画・ドラマ・CMなど幅広い分野に出演。「夢や希望を届けたい」という想いを胸に前進中。",id:"haruno_060525",p:"DdaBwA9Eyfz",s:"人は夢を二度見る",a:"乃木坂46"},
+ {n:"鈴木 日楽",r:"Kara Suzuki",k:"teal",cat:"media",c:"言葉の力で、明日への活力、元気を届けたい。",t:"アナウンサー志望｜元バスケットボールプレイヤー",d:"13年間のバスケ人生の終盤、怪我でプレーを断念。支えてくれたアナウンサーへの恩返しを胸に、この道へ。朝の番組やスポーツ中継で、選手の想いを伝えたい。",id:"kara_suzuki0307",p:"DdXeNR-E_iX",s:"ダーリン",a:"Mrs. GREEN APPLE"},
+ {n:"青野 さくら",r:"Sakura Aono",k:"navy",cat:"show",c:"夢は、アクションができる女優。",t:"横浜国際映画祭ファイナリスト｜モデル・女優志望",d:"「週刊ヤングマガジン」22・23合併号に掲載。横浜国際映画祭 新人女優オーディション2025ファイナリスト。モデル兼アクション女優を目指し、日々練習に励む。",id:"sakura_aono_",p:"DdU4G_5E1KB",s:"ベルベットの詩",a:"back number"},
+ {n:"藤井 明香",r:"Asuka Fujii",k:"orange",cat:"media",c:"夢はアナウンサー、伝える力を磨く。",t:"ニチエンプロダクション所属｜アナウンサー志望",d:"学習院大学3年生。ニチエンプロダクション所属。首都圏トレンド大使や学生リポーターとして活動。市川うららFMのパーソナリティも務め、防災士も取得。",id:"asuka.fujii__",p:"DdSThwPE6mq",s:"同じ空の下",a:"高橋優"},
+ {n:"山口 みらん",r:"Miran Yamaguchi",k:"blue",cat:"fan",c:"勝利の美酒に、酔いしれる。",t:"横浜F・マリノスサポーター｜元アイドル",d:"勝ち酒が生きがいのマリサポ。その様子をInstagramで発信中。元アイドルの経験を活かし、大好きなサッカーを盛り上げる。",id:"yamaguchi_miran",p:"DdQ8SUuGP7_",s:"FORZA! OLE!",a:"放課後プリンセス"},
+ {n:"Ryo",r:"",k:"red",cat:"fan",c:"マンチェスターユナイテッドと共に生きる。",t:"マンチェスターユナイテッドサポーター",d:"同郷・香川真司選手の加入がきっかけでサポーターに。InstagramとTikTokでユナイテッドに関する動画を発信。Come on United!!!!",id:"ryomanutd",p:"DdQ2eVJmI9y",s:"STAR",a:"Ziproom"},
+ {n:"高見 仁",r:"Jin Takami",k:"blue",cat:"sports",c:"あるあるネタとトレーナーの二刀流。",t:"元Jリーグトレーナー",d:"サッカー部員やお母さんが笑って学べる投稿を発信。元Jリーグトレーナーとしての知見を活かし、怪我予防・食事・身体作りを毎日届けている。",id:"takami_trainer",p:"DdPvzy2k1f1",s:"センス・オブ・ワンダー",a:"sumika"},
+ {n:"前田 大自然",r:"Daishizen Maeda",k:"navy",cat:"show",c:"日本を、笑いで包む。",t:"前田大然選手ものまね芸人｜公認を目指し活動中",d:"前田大然選手のものまねで、公認を目指し全力疾走中。日本屈指のスピードスター（のものまね）。その勢いのまま、日本を笑いで包んでいく。",id:"maeda_daishizen",p:"DdN2UIkmPMy",s:"トレイン",a:"ケツメイシ"},
+ {n:"シャンマイ",r:"Shanmai",k:"gold",cat:"fan",c:"4年後、W杯へ行く。",t:"柏レイソル・日本代表サポーター｜元アイドル",d:"4年後のW杯に行くために、日々働いている。柏レイソルと日本代表（サムライブルー）を応援。元アイドルという経歴を持ち、夢はお金持ちになること。",id:"shanmai_28",p:"DdNrXgkmC8a",s:"さらば青春のパンク〜突き進め柏〜",a:"バックドロップシンデレラ"},
+ {n:"海",r:"Kai",k:"blue",cat:"world",c:"完璧じゃなくても、話してみる。",t:"北陸大学｜英語チャレンジTikToker",d:"北陸大学に在学中。「I am me, you are you」がモットー。カタコト英語でも臆せず挑戦し続けている。その成長の記録を、TikTokで公開中。",id:"ka._i1013",p:"DdLksuymJd_",s:"Fight Song",a:"レイチェル・プラッテン"},
+ {n:"瀧本 広大",r:"Kodai Takimoto",k:"sky",cat:"sports",c:"鉄は、熱いうちに打て。",t:"ピックルボール｜日本代表を目指す大学生",d:"ピックルボールでプロを目指し、大学を1年間休学。日本代表としてアジアの大会での結果を目標に活動。共に戦うパートナー・スポンサーを募集中。",id:"kodai_pickleball",p:"DdLQD_4mAb8",s:"Save Yourself",a:"ONE OK ROCK"},
+ {n:"そら",r:"Sora",k:"orange",cat:"show",c:"マジックで、人を笑顔にしたい。",t:"大阪府｜マジック好き高校生",d:"大阪府在住の高校2年生。趣味はマジック。人を笑わせ、驚かせる瞬間が大好き。人気者になれる秘訣を、探求中。",id:"sora_tobitate10",p:"DdLBv7uGJ71",s:"Best Friend",a:"西野カナ"},
+ {n:"吉田 脩玲",r:"Shurei Yoshida",k:"red",cat:"sports",c:"境界を越えて、人々の声を届ける。",t:"Northwest College サッカー部所属",d:"名古屋経済大学高蔵高校を卒業。今年7月に渡米し、Northwest Collegeでサッカーをしている。キャリアの可能性を広げるための渡米。夢はプロサッカー選手。",id:"gi_gi_chicken",p:"DdKwZKomMGB",s:"Take what you want",a:"ONE OK ROCK"},
+ {n:"竹内 利樹人",r:"Rikito Takeuchi",k:"orange",cat:"sports",c:"スポーツと人材で、日本を強くする。",t:"堀越高校OB｜Cowley College進学",d:"堀越高校で3年間プレー、2年時に選手権ベスト4。3年時は主将を務め、チームをベスト8に導いた。2025年8月より、米カウリーカレッジへ進学。",id:"rikito_take",p:"DdDW3DtEa88",s:"Glorious",a:"BE:FIRST"},
+ {n:"りこ",r:"Riko",k:"amber",cat:"sports",c:"運動する楽しさを、伝えたい。",t:"フィットネストレーナー｜SFF王者",d:"フィットネストレーナーとして活動中。2025年SFF日本一に輝く。2026年NABBA Japan ACではTop6入り。",id:"ri_fit44",p:"DdAVC9YE6yN",s:"Hero",a:"安室奈美恵"},
+ {n:"つよぽん",r:"Tsuyopon",k:"blue",cat:"fan",c:"香川真司選手とコラボしたい。",t:"サッカー挑戦Vlogger",d:"高校ではバスケ部に所属。社会人になってからサッカーに本気で挑戦中。夢は、香川真司選手とのコラボレーション。",id:"tsuyopon131.jp",p:"Dc9v1Tok-Zw",s:"私は最強",a:"Mrs. GREEN APPLE"},
+ {n:"のん",r:"Non",k:"orange",cat:"fan",c:"J3と地域リーグを、もっと盛り上げる。",t:"サッカー観戦｜AC長野パルセイロサポーター",d:"J3・JFL・地域リーグを中心に、全国を飛び回り観戦。より多くの人にスタジアムへ足を運んでほしい。J3を盛り上げるべく、発信を続けている。",id:"nonchan_acnp29",p:"Dc8ki5rmAiL",s:"Stardust story",a:"衛星とカラテア"},
+ {n:"こはる",r:"Koharu",k:"red",cat:"fan",c:"やらない後悔より、やる勇気を。",t:"帝京大学3年｜FC東京サポーター",d:"帝京大学3年生、FC東京の熱心なサポーター。2026年11月1日の起業を目標に、日々行動中。行動しない後悔より、行動する後悔を選びたい。",id:"7mk_ll",p:"Dcvai6nGJo5",s:"リンドウ",a:"雷蔵"},
+ {n:"J兄",r:"",k:"red",cat:"fan",c:"サッカー最新情報・グッズを紹介！！",t:"静岡県藤枝市出身｜サッカー情報キャラクター",d:"Jリーグと同じ5月15日生まれ。2002年日韓W杯の年、サッカー王国・藤枝に誕生。夢は、あいみょんさんと一緒にサッカーをすること。",id:"j_nii_11",p:"DctFYuJGJuu",s:"さよならの今日に",a:"あいみょん"},
+ {n:"阿部 明日香",r:"Asuka Abe",k:"blue",cat:"media",c:"私の全てを、みんなに届ける。",t:"岡山・香川・広島｜テレビ・ラジオ・MC",d:"岡山・香川・広島でテレビ、ラジオ、MCとして活動。仕事終わりは、街でお酒を楽しむのが日課。自分の全てを出し切ることが、目標。",id:"aa_wsp",p:"DclDUCrGAMz",s:"一滴の影響",a:"UVERworld"},
+ {n:"池田 志織",r:"Shiori Ikeda",k:"red",cat:"world",c:"後世に、名を残す。",t:"ARTS of LIQUID｜代表取締役CEO",d:"英国留学の経験から、水溶性PVAと古着を用いたアパレル事業を考案。資金調達を完了し、スタンフォード大研究者の助言で試験販売を準備中。",id:"shiori_ikeda_",p:"Dcf5xIlGB6o",s:"after image",a:"toe"},
+ {n:"いらこ",r:"Irako",k:"blue",cat:"fan",c:"三ツ沢が毎回満員になる「きっかけ」を作り続けたい。",t:"横浜FCサポーター｜横浜国立大学",d:"横浜FCの魅力を発信中。2025シーズンは全試合を現地観戦。試合の思い出をYouTubeで発信している。",id:"irakoooooou",p:"DcZp6tuE28L",s:"タマシイレボリューション",a:"Superfly"},
+ {n:"佐藤 衣莉彩",r:"Elia Sato",k:"purple",cat:"world",c:"境界を越えて、人々の声を届ける。",t:"国際教育・人権分野｜ニューヨーク大学（NYU）卒",d:"TikTokでPMS・PMDDなどメンタルヘルスを発信。国際教育のメディア活動のほか、モデルとしても活動。女性の権利など人権・社会課題にも関心を持つ。",id:"s.elia___",p:"DcUqVICGI6Y",s:"Click clack symphony",a:"RAYE"},
+ {n:"髙橋 知希",r:"Tomoki Takahashi",k:"purple",cat:"sports",c:"3軍から、這い上がる。",t:"立教大学サッカー部｜Rikkyo Run Club創設者",d:"立教大学3年生、サッカー部3軍に所属。「這い上がりvlog」を発信中。Rikkyo Run Club（RRC）を立ち上げ活動中。",id:"tkhslog",p:"DcMtEq4mK8Y",s:"筆舌",a:"RADWIMPS"},
+ {n:"松久 栞南",r:"Kanna Matsuhisa",k:"blue",cat:"sports",c:"目指す舞台は、イングランド。そして日本代表へ。",t:"Kolbotn IL｜プロサッカー選手",d:"十文字中学・高校からFC町田ゼルビアへ。渡米しVCUで4年間プレーし、24年12月卒業。現在はノルウェー・Kolbotn ILに所属。",id:"kannamatsuhisa",p:"DcHhzVDk43C",s:"麻痺",a:"yama"},
+ {n:"星野 昴",r:"Subaru Hoshino",k:"pink",cat:"sports",c:"世界一になる漢。",t:"エルアグア東京｜ソサイチ日本代表",d:"関東1部リーグ6連覇、全国大会優勝10回。全国大会MVP、関東MVPを獲得している日本を代表する最強GK。現在も進化を続け、世界の頂点を目指す。",id:"baru_1",p:"Db-nVIRGA-Q",s:"Waka Waka (This Time for Africa)",a:"Shakira"},
+ {n:"尾﨑 礼菜",r:"Rena Osaki",k:"tan",cat:"world",c:"よさこいで、日本とアフリカをつなぐ。",t:"高知県出身｜日本×アフリカ文化交流プロジェクト",d:"高知県出身、広島の中高一貫校に通う高校3年生。日本の伝統文化・よさこいを通じて、日本とアフリカをつなぐ交流プロジェクトを実施中。",id:"rena.osaki",p:"DbzFxkuk0XD",s:"I'll Be Missing You",a:"ショーン・コムズ"},
+ {n:"難波 拓未",r:"Takumi Namba",k:"red",cat:"media",c:"魂を込めて、魅力を伝える。",t:"ファジアーノ岡山｜番記者",d:"2022年からファジアーノ岡山の取材を開始。24年から公式マッチデープログラムを担当。26年より地元・岡山でフリーランスとして活動。",id:"takumi__namba",p:"Dbt2mrgkzab",s:"夢",a:"ゴーストノート"},
+ {n:"鴛渕 有咲",r:"Arisa Oshibuchi",k:"pink",cat:"sports",c:"早稲田大学競走部、学生トレーナーの鴛渕です。",t:"早稲田大学競走部｜学生トレーナー3年",d:"とある先輩に「キラキラピンク」と呼ばれ感激。目の前で困っている人を、1人でも多く救いたい。痛みや不調に、全力でサポートする。",id:"buccchiiiiii",p:"DboskCqEzMF",s:"Super Star Child",a:"go!go!vanillas"},
+ {n:"まいと",r:"Maito",k:"blue",cat:"fan",c:"ロナウド選手と、コラボしたい。",t:"サッカー界を盛り上げる男",d:"クリスティアーノ・ロナウド選手とのコラボレーションが将来の夢。情熱を胸に、サッカー界を盛り上げていく。",id:"m01aito",p:"DbjlH0NEzXh",s:"U R not alone",a:"NEWS"},
+ {n:"御厨 明",r:"Mei Mikuriya",k:"gold",cat:"world",c:"「ガーナ＝チョコレート？」その先へ。",t:"トビタテ11期生｜JAFRIC Co-founder",d:"高校生同士のReal Exchangeで、偏見を越え共創の可能性を広げ、国際的な視点を持つ次世代を育成。",id:"tobitate_11_mei",p:"DbbxIKYkxDr",s:"Magic System",a:"Magic in the Air"}
+].map((g,i)=>({...g,i,kc:K[g.k]}));
+
+const CATS=[
+ {id:"latest",t:"最新エピソード",e:"NEW EPISODES",f:g=>g.i<12},
+ {id:"cat-media",t:"アナウンサー・伝える仕事",e:"MEDIA",f:g=>g.cat==="media"},
+ {id:"cat-sports",t:"アスリート・指導者・トレーナー",e:"SPORTS",f:g=>g.cat==="sports"},
+ {id:"cat-fan",t:"サポーター・発信者",e:"SUPPORTERS",f:g=>g.cat==="fan"},
+ {id:"cat-show",t:"俳優・モデル・エンタメ",e:"ENTERTAINMENT",f:g=>g.cat==="show"},
+ {id:"cat-world",t:"起業・国際・挑戦",e:"CHALLENGERS",f:g=>g.cat==="world"}
+];
+
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const fam=g=>(g.r?g.r.split(" ").pop():g.id.replace(/[^a-z]/gi,"")).toUpperCase();
+const sp='<svg class="sp" aria-hidden="true"><use href="#sp"/></svg>';
+
+const post=(g,tag="button")=>`<${tag} class="post" ${tag==="button"?`data-i="${g.i}" aria-label="${esc(g.n)}さんの回を開く"`:""} style="--k:${g.kc}">
+  <div class="ph tint">${g.img?`<img src="${esc(g.img)}" alt="">`:`<span class="ghost">${esc(fam(g))}</span>`}
+    <div class="mini"><i></i>夢、途中<small>PODCAST</small></div>
+    <p class="yt it">YUME, TOCHU<br>PODCAST</p><div class="uline"></div></div>
+  <div class="info">
+    <div class="catch">${esc(g.c)}</div>
+    <div class="glabel">GUEST</div>
+    <div class="gname">${esc(g.n)}${g.r?`<span>${esc(g.r)}</span>`:""}</div>
+    <span class="pill">${esc(g.t)}</span>
+    <div class="spbar">${sp}<b>Spotifyで配信中！<small>プロフィールのリンクからご視聴いただけます</small></b><span class="chev">›››</span></div>
+  </div></${tag}>`;
+
+/* rows */
+const rows=document.getElementById("rows");
+function renderRows(q){
+  q=(q||"").trim().toLowerCase();
+  if(q){
+    const hit=G.filter(g=>[g.n,g.r,g.c,g.t,g.d,g.s,g.a,g.id].join(" ").toLowerCase().includes(q));
+    rows.innerHTML=`<section class="row"><div class="row-head"><h3><small>SEARCH</small>「${esc(q)}」の検索結果 ${hit.length}件</h3><button class="all" id="clearQ">クリア<b>›››</b></button></div>
+      ${hit.length?`<div class="track grid">${hit.map(g=>post(g)).join("")}</div>`:`<p class="empty">見つかりませんでした。名前の一部、所属、曲名などで試してください。</p>`}</section>`;
+    document.getElementById("clearQ").onclick=()=>{qi.value="";renderRows("")};
+    return;
+  }
+  rows.innerHTML=CATS.map(c=>{const list=G.filter(c.f);return `<section class="row" id="${c.id}">
+    <div class="row-head"><h3><small>${c.e}</small>${c.t}</h3><button class="all" data-toggle>すべて表示<b>›››</b></button></div>
+    <div class="track">${list.map(g=>post(g)).join("")}</div></section>`}).join("");
+}
+rows.addEventListener("click",e=>{
+  const t=e.target.closest("[data-toggle]");
+  if(t){const tr=t.closest(".row").querySelector(".track");const on=tr.classList.toggle("grid");t.innerHTML=on?"閉じる<b>‹‹‹</b>":"すべて表示<b>›››</b>";return}
+  const c=e.target.closest(".post[data-i]");if(c)openModal(+c.dataset.i);
+});
+renderRows("");
+document.getElementById("navCats").innerHTML=CATS.map(c=>`<a href="#${c.id}">${c.t}</a>`).join("");
+document.getElementById("guestCount").innerHTML=`${G.length}名<small>Instagram掲載の出演者紹介より</small>`;
+
+/* hero */
+const stage=`<svg class="stage" viewBox="0 0 300 300" aria-hidden="true">
+  <polygon points="214,62 236,74 270,290 90,290" fill="#F2CF73" opacity=".85"/>
+  <g transform="rotate(28 225 60)"><rect x="208" y="34" width="34" height="46" rx="5" fill="#1D2A4C"/><rect x="221" y="14" width="8" height="22" fill="#1D2A4C"/><ellipse cx="225" cy="82" rx="20" ry="5" fill="#1D2A4C"/></g>
+  <rect x="146" y="150" width="20" height="38" rx="10" fill="#1D2A4C"/>
+  <path d="M138 176a18 18 0 0 0 36 0" stroke="#1D2A4C" stroke-width="5" fill="none"/>
+  <rect x="153" y="194" width="6" height="88" fill="#1D2A4C"/>
+  <path d="M130 288h52" stroke="#1D2A4C" stroke-width="6" stroke-linecap="round"/></svg>`;
+const heroGuests=[0,1,2,3];
+const picks=[
+ {brand:true},
+ ...heroGuests.map(i=>({g:G[i]})),
+ {recruit:true}
+];
+const slidesEl=document.getElementById("slides"),dotsEl=document.getElementById("dots");
+slidesEl.innerHTML=picks.map((s,n)=>{
+  const lab=`role="group" aria-roledescription="slide" aria-label="${n+1} / ${picks.length}"`;
+  if(s.brand)return `<div class="slide brand" ${lab}><div class="ring"></div><div class="in"><div>
+    <h2>夢、途中。</h2><div class="sub">挑戦する若者の、リアルなストーリーを。</div>
+    <div class="ytc">YUME, TOCHU.</div>
+    <div class="acts"><a class="btn" href="${SHOW}" target="_blank" rel="noopener">${sp}Spotifyで聴く</a></div></div>${stage}</div></div>`;
+  if(s.recruit)return `<div class="slide tint" style="--k:${K.red}" ${lab}><span class="ghost">CASTING</span><div class="in">
+    <p class="yt it">YUME, TOCHU<br>PODCAST</p><div class="uline"></div>
+    <h2>あなたの「夢、途中。」を<br>聞かせてください。</h2>
+    <p class="desc">出演・収録したい方を待っています。20分ノーカット、顔出しで夢を語ってみませんか。</p>
+    <a class="btn" href="https://www.instagram.com/yume.tochu/" target="_blank" rel="noopener">DMで応募する</a></div></div>`;
+  const g=s.g;
+  return `<div class="slide tint" style="--k:${g.kc}" ${lab}><span class="ghost">${esc(fam(g))}</span><div class="in">
+    <p class="yt it">YUME, TOCHU<br>PODCAST</p><div class="uline"></div>
+    <h2>${esc(g.c)}</h2>
+    <div class="glabel">NEW EPISODE ・ GUEST</div>
+    <div class="gname">${esc(g.n)}${g.r?`<span>${esc(g.r)}</span>`:""}</div>
+    <span class="pill">${esc(g.t)}</span>
+    <p class="desc">${esc(g.d)}</p>
+    <div class="acts"><a class="btn" href="${SHOW}" target="_blank" rel="noopener">${sp}Spotifyで聴く</a><button class="btn line" data-open="${g.i}">詳しく見る</button></div></div></div>`;
+}).join("");
+dotsEl.innerHTML=picks.map((_,n)=>`<button role="tab" aria-label="スライド${n+1}"></button>`).join("");
+slidesEl.addEventListener("click",e=>{const b=e.target.closest("[data-open]");if(b)openModal(+b.dataset.open)});
+let cur=0,timer;
+function go(n){cur=(n+picks.length)%picks.length;slidesEl.style.transform=`translateX(-${cur*100}%)`;
+  [...dotsEl.children].forEach((d,k)=>d.setAttribute("aria-current",k===cur));}
+function auto(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)timer=setInterval(()=>go(cur+1),6500)}
+document.getElementById("prev").onclick=()=>{go(cur-1);auto()};
+document.getElementById("next").onclick=()=>{go(cur+1);auto()};
+dotsEl.onclick=e=>{const k=[...dotsEl.children].indexOf(e.target);if(k>=0){go(k);auto()}};
+let sx=null;slidesEl.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+slidesEl.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){go(cur+(dx<0?1:-1));auto()}sx=null});
+go(0);auto();
+
+/* modal */
+const modal=document.getElementById("modal"),sheet=document.getElementById("sheet");let lastFocus;
+function openModal(i){const g=G[i];lastFocus=document.activeElement;
+  sheet.style.setProperty("--k",g.kc);
+  sheet.innerHTML=`<button class="icon-btn x" id="mClose" aria-label="閉じる"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+    ${post(g,"div")}
+    <div class="body"><h4>【${esc(g.n.replace(" ",""))}さんの夢、途中】</h4>
+    <p>${esc(g.d)}</p>
+    <div class="song"><span>FAVORITE SONG</span>「${esc(g.s)}」${esc(g.a)}</div>
+    <div class="acts">
+      <a class="btn" href="${SHOW}" target="_blank" rel="noopener">${sp}Spotifyで聴く</a>
+      <a class="btn line" href="https://www.instagram.com/p/${encodeURIComponent(g.p)}/" target="_blank" rel="noopener">紹介投稿を見る</a>
+      <a class="btn line" href="https://www.instagram.com/${encodeURIComponent(g.id)}/" target="_blank" rel="noopener">@${esc(g.id)}</a>
+    </div></div>`;
+  modal.hidden=false;document.getElementById("mClose").onclick=closeModal;document.getElementById("mClose").focus();}
+function closeModal(){modal.hidden=true;lastFocus&&lastFocus.focus()}
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+
+/* menu & search */
+const drawer=document.getElementById("drawer");
+document.getElementById("menuBtn").onclick=()=>{drawer.hidden=false;document.getElementById("closeMenu").focus()};
+document.getElementById("closeMenu").onclick=()=>drawer.hidden=true;
+drawer.addEventListener("click",e=>{if(e.target===drawer||e.target.tagName==="A")drawer.hidden=true});
+const sb=document.getElementById("searchBox"),qi=document.getElementById("q"),sBtn=document.getElementById("searchBtn");
+sBtn.onclick=()=>{sb.hidden=!sb.hidden;sBtn.setAttribute("aria-expanded",!sb.hidden);if(!sb.hidden)qi.focus();else{qi.value="";renderRows("")}};
+qi.addEventListener("input",()=>renderRows(qi.value));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(!modal.hidden)closeModal();drawer.hidden=true}});
+</script>
+
+</body></html>

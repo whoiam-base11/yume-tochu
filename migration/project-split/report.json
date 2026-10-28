@@ -1,0 +1,31 @@
+{
+  "migratedAt": "2026-10-24T11:38:13.366Z",
+  "originalDatasetsRetained": true,
+  "vercelEnvironmentUpdated": false,
+  "projects": {
+    "canva-website": {
+      "sourceProject": "0l42ln1r",
+      "sourceDataset": "production",
+      "projectId": "8iciyt56",
+      "dataset": "production",
+      "contents": 10,
+      "assets": 0,
+      "references": 0,
+      "humanAdministrators": 1,
+      "verifiedAt": "2026-10-24T11:36:23.238Z",
+      "crossProjectWriteDenied": true
+    },
+    "yume-muchu": {
+      "sourceProject": "0l42ln1r",
+      "sourceDataset": "yume-muchu",
+      "projectId": "1zhudycx",
+      "dataset": "production",
+      "contents": 54,
+      "assets": 56,
+      "references": 55,
+      "humanAdministrators": 1,
+      "verifiedAt": "2026-10-24T11:37:52.123Z",
+      "crossProjectWriteDenied": true
+    }
+  }
+}
