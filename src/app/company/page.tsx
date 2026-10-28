@@ -95,17 +95,7 @@ export default function CompanyPage() {
             </p>
           </div>
           <dl className="m-0 grid content-start border-t-2 border-navy">
-            <div className="grid grid-cols-[8em_1fr] gap-3 py-3.5 border-b border-[rgb(29_42_76/0.18)] max-[820px]:grid-cols-[6.5em_1fr]">
-              <dt className="text-[11px] font-bold tracking-[0.16em] text-[#8B7A55] pt-[3px]">
-                名称
-              </dt>
-              <dd className="m-0 font-medium">
-                <span className="inline-block px-1.5 border border-dashed border-current rounded-[3px] text-[0.86em] font-bold opacity-75">
-                  会社名・屋号を入力
-                </span>
-              </dd>
-            </div>
-            <div className="grid grid-cols-[8em_1fr] gap-3 py-3.5 border-b border-[rgb(29_42_76/0.18)] max-[820px]:grid-cols-[6.5em_1fr]">
+<div className="grid grid-cols-[8em_1fr] gap-3 py-3.5 border-b border-[rgb(29_42_76/0.18)] max-[820px]:grid-cols-[6.5em_1fr]">
               <dt className="text-[11px] font-bold tracking-[0.16em] text-[#8B7A55] pt-[3px]">
                 代表者
               </dt>
@@ -115,22 +105,7 @@ export default function CompanyPage() {
               <dt className="text-[11px] font-bold tracking-[0.16em] text-[#8B7A55] pt-[3px]">
                 所在地
               </dt>
-              <dd className="m-0 font-medium">
-                岡山県{" "}
-                <span className="inline-block px-1.5 border border-dashed border-current rounded-[3px] text-[0.86em] font-bold opacity-75">
-                  以降の住所を入力
-                </span>
-              </dd>
-            </div>
-            <div className="grid grid-cols-[8em_1fr] gap-3 py-3.5 border-b border-[rgb(29_42_76/0.18)] max-[820px]:grid-cols-[6.5em_1fr]">
-              <dt className="text-[11px] font-bold tracking-[0.16em] text-[#8B7A55] pt-[3px]">
-                設立
-              </dt>
-              <dd className="m-0 font-medium">
-                <span className="inline-block px-1.5 border border-dashed border-current rounded-[3px] text-[0.86em] font-bold opacity-75">
-                  設立年月を入力
-                </span>
-              </dd>
+              <dd className="m-0 font-medium">岡山県</dd>
             </div>
             <div className="grid grid-cols-[8em_1fr] gap-3 py-3.5 border-b border-[rgb(29_42_76/0.18)] max-[820px]:grid-cols-[6.5em_1fr]">
               <dt className="text-[11px] font-bold tracking-[0.16em] text-[#8B7A55] pt-[3px]">
