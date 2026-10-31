@@ -119,6 +119,47 @@ body {
   .card-catch { font-size: 11.5px; }
 }
 
+/* Hero brand slide — viewport proportional scaling */
+.hero-brand-circle {
+  border-width: calc(6 / 1432 * 100vw);
+}
+
+.hero-brand-content {
+  max-width: calc(1200 / 1432 * 100vw);
+  padding: calc(44 / 1432 * 100vw) calc(72 / 1432 * 100vw) calc(48 / 1432 * 100vw);
+  gap: calc(24 / 1432 * 100vw);
+}
+
+.hero-brand-subtitle {
+  margin-top: calc(18 / 1432 * 100vw);
+  margin-bottom: calc(6 / 1432 * 100vw);
+  border-bottom-width: calc(2 / 1432 * 100vw);
+  padding-bottom: calc(4 / 1432 * 100vw);
+}
+
+.hero-brand-label {
+  font-size: calc(12 / 1432 * 100vw);
+  letter-spacing: 0.42em;
+  margin-top: calc(16 / 1432 * 100vw);
+  margin-bottom: calc(20 / 1432 * 100vw);
+}
+
+.hero-brand-btn {
+  padding: calc(11 / 1432 * 100vw) calc(20 / 1432 * 100vw);
+  gap: calc(10 / 1432 * 100vw);
+  font-size: calc(14 / 1432 * 100vw);
+  border-radius: 9999px;
+}
+
+.hero-brand-btn-icon {
+  width: calc(18 / 1432 * 100vw);
+  height: calc(18 / 1432 * 100vw);
+}
+
+.hero-brand-svg {
+  max-width: calc(340 / 1432 * 100vw);
+}
+
 /* Hero episode buttons — viewport proportional scaling */
 .hero-btn-wrap {
   bottom: calc(120 / 1432 * 100vw);
@@ -143,27 +184,27 @@ body {
   height: calc(18 / 1432 * 100vw);
 }
 
-@media (max-width: 390px) {
+@media (max-width: 391px) {
   .hero-btn-wrap {
     left: auto;
-    right: 12px;
-    bottom: 40px;
+    right: calc(12 / 390 * 100vw);
+    bottom: calc(46 / 390 * 100vw);
     flex-direction: column;
     align-items: flex-end;
-    gap: 6px;
+    gap: calc(6 / 390 * 100vw);
   }
   .hero-btn {
     min-height: auto;
-    padding: 6px 10px;
-    font-size: 10px;
+    padding: calc(6 / 390 * 100vw) calc(10 / 390 * 100vw);
+    font-size: calc(10 / 390 * 100vw);
     line-height: normal;
   }
   .hero-btn-spotify {
-    gap: 4px;
+    gap: calc(4 / 390 * 100vw);
   }
   .hero-btn-icon {
-    width: 12px;
-    height: 12px;
+    width: calc(12 / 390 * 100vw);
+    height: calc(12 / 390 * 100vw);
   }
 }
 

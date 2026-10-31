@@ -64,29 +64,29 @@ export default function Hero({
 
   const renderBrandSlide = (key: string) => (
     <div key={key} className="flex-none w-full h-full relative overflow-hidden flex items-center bg-cream text-navy" aria-hidden={key !== "brand"}>
-      <div className="absolute left-1/2 top-1/2 w-[min(1100px,150vw)] aspect-square -translate-x-[58%] -translate-y-1/2 rounded-full border-[6px] border-navy border-r-transparent border-t-transparent opacity-90 pointer-events-none -rotate-[20deg]" />
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-[72px] pt-11 pb-12 grid grid-cols-[1.1fr_0.9fr] items-center gap-6 max-md:grid-cols-1 max-md:px-12 max-sm:px-6">
+      <div className="hero-brand-circle absolute left-1/2 top-1/2 w-[min(1100px,150vw)] aspect-square -translate-x-[58%] -translate-y-1/2 rounded-full border-navy border-r-transparent border-t-transparent opacity-90 pointer-events-none -rotate-[20deg]" />
+      <div className="hero-brand-content relative z-10 w-full mx-auto grid grid-cols-[1.1fr_0.9fr] items-center max-md:grid-cols-1">
         <div>
-          <h2 className="font-mincho font-extrabold text-[clamp(56px,9vw,112px)] leading-none tracking-[0.02em] m-0 whitespace-nowrap max-sm:text-[clamp(44px,13vw,64px)]">
+          <h2 className="font-mincho font-extrabold text-[clamp(56px,9vw,112px)] leading-none tracking-[0.02em] m-0 whitespace-nowrap">
             夢、途中。
           </h2>
-          <div className="font-bold text-[clamp(13px,1.5vw,16px)] mt-4.5 mb-1.5 border-b-2 border-spot inline-block pb-1">
+          <div className="hero-brand-subtitle font-bold text-[clamp(13px,1.5vw,16px)] border-b-spot inline-block">
             挑戦する若者の、リアルなストーリーを。
           </div>
-          <div className="text-xs tracking-[0.42em] font-medium mt-4 mb-5">
+          <div className="hero-brand-label font-medium">
             YUME, TOCHU.
           </div>
           <a
-            className="inline-flex items-center gap-2.5 py-[11px] px-5 rounded-full bg-navy text-cream font-bold no-underline text-sm max-sm:py-2 max-sm:px-3.5 max-sm:gap-1.5 max-sm:text-xs"
+            className="hero-brand-btn inline-flex items-center bg-navy text-cream font-bold no-underline"
             href={SHOW_URL}
             target="_blank"
             rel="noopener"
           >
-            <SpotifyIcon className="w-[18px] h-[18px] max-sm:w-3.5 max-sm:h-3.5" />
+            <SpotifyIcon className="hero-brand-btn-icon" />
             Spotifyで聴く
           </a>
         </div>
-        <svg className="w-full max-w-[340px] justify-self-center max-md:max-w-[130px] max-md:absolute max-md:right-5 max-md:bottom-3.5 max-md:opacity-95 max-sm:max-w-24 max-sm:right-2.5 max-sm:bottom-2.5" viewBox="0 0 300 300" aria-hidden="true">
+        <svg className="hero-brand-svg w-full justify-self-center max-md:absolute max-md:right-[3.5%] max-md:bottom-[6.5%] max-md:max-w-[9vw] max-md:opacity-95" viewBox="0 0 300 300" aria-hidden="true">
           <polygon points="214,62 236,74 270,290 90,290" fill="#F2CF73" opacity=".85" />
           <g transform="rotate(28 225 60)">
             <rect x="208" y="34" width="34" height="46" rx="5" fill="#1D2A4C" />
@@ -113,7 +113,7 @@ export default function Hero({
             src={urlFor(desktopImage.asset).width(1920).fit("max").url()}
             alt={`${ep.name}さんのインタビュー`}
             fill
-            className={`object-contain object-center${mobileImage ? " max-[390px]:hidden" : ""}`}
+            className={`object-contain object-center${mobileImage ? " max-[391px]:hidden" : ""}`}
             sizes="100vw"
             priority
           />
@@ -123,7 +123,7 @@ export default function Hero({
             src={urlFor(mobileImage.asset).width(390).height(338).fit("crop").url()}
             alt={`${ep.name}さんのインタビュー`}
             fill
-            className="hidden max-[390px]:block object-cover object-center"
+            className="hidden max-[391px]:block object-cover object-center"
             sizes="390px"
             priority
           />
@@ -153,7 +153,7 @@ export default function Hero({
   };
 
   return (
-    <section className="group relative aspect-[8/3] max-[390px]:aspect-[390/338] overflow-hidden bg-black" aria-roledescription="carousel" aria-label="ピックアップ">
+    <section className="group relative aspect-[8/3] max-[391px]:aspect-[390/338] overflow-hidden bg-black" aria-roledescription="carousel" aria-label="ピックアップ">
       <div
         ref={trackRef}
         className={`absolute inset-0 flex${animate ? " slides-transition" : ""}`}
