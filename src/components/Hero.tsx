@@ -77,7 +77,7 @@ export default function Hero({
             YUME, TOCHU.
           </div>
           <a
-            className="hero-brand-btn inline-flex items-center bg-navy text-cream font-bold no-underline"
+            className="hero-brand-btn inline-flex items-center bg-navy text-cream font-bold no-underline max-[391px]:hidden"
             href={SHOW_URL}
             target="_blank"
             rel="noopener"
@@ -99,6 +99,15 @@ export default function Hero({
           <path d="M130 288h52" stroke="#1D2A4C" strokeWidth="6" strokeLinecap="round" />
         </svg>
       </div>
+      <a
+        className="hero-brand-btn hidden max-[391px]:inline-flex items-center bg-navy text-cream font-bold no-underline"
+        href={SHOW_URL}
+        target="_blank"
+        rel="noopener"
+      >
+        <SpotifyIcon className="hero-brand-btn-icon" />
+        Spotifyで聴く
+      </a>
     </div>
   );
 

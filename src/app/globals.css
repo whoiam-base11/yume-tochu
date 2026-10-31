@@ -160,6 +160,38 @@ body {
   max-width: calc(340 / 1432 * 100vw);
 }
 
+@media (max-width: 391px) {
+  .hero-brand-content {
+    padding: 0 calc(19.6 / 390 * 100vw) calc(13.1 / 390 * 100vw);
+    gap: calc(6.5 / 390 * 100vw);
+  }
+  .hero-brand-subtitle {
+    margin-top: calc(4.9 / 390 * 100vw);
+    margin-bottom: calc(1.6 / 390 * 100vw);
+  }
+  .hero-brand-label {
+    margin-top: calc(4.4 / 390 * 100vw);
+    margin-bottom: calc(5.4 / 390 * 100vw);
+  }
+  .hero-brand-svg {
+    right: 3%;
+    bottom: 5%;
+  }
+  .hero-brand-btn {
+    position: absolute;
+    z-index: 10;
+    bottom: calc(75 / 390 * 100vw);
+    left: calc(50.96 / 390 * 100vw);
+    padding: calc(11 / 477 * 100vw) calc(20 / 477 * 100vw);
+    gap: calc(10 / 477 * 100vw);
+    font-size: calc(14 / 477 * 100vw);
+  }
+  .hero-brand-btn-icon {
+    width: calc(18 / 477 * 100vw);
+    height: calc(18 / 477 * 100vw);
+  }
+}
+
 /* Hero episode buttons — viewport proportional scaling */
 .hero-btn-wrap {
   bottom: calc(120 / 1432 * 100vw);
