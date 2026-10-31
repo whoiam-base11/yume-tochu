@@ -93,6 +93,13 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "heroImageMobile",
+      title: "Hero用画像（スマホ）",
+      description: "スマホ表示時のヒーロー画像（390×338px推奨）。未設定の場合はPC用画像を使用します。",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "instagramId",
       title: "Instagram ID",
       type: "string",

@@ -14,6 +14,7 @@ export type Episode = {
   } | null;
   instagramId: string | null;
   heroImage: Episode["image"];
+  heroImageMobile: Episode["image"];
   instagramPostId: string | null;
   favoriteSong: string | null;
   favoriteArtist: string | null;

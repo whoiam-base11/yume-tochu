@@ -16,7 +16,7 @@ const shipporiMincho = Shippori_Mincho_B1({
 });
 
 export const metadata: Metadata = {
-  title: "夢、途中。| YUME, TOCHU PODCAST",
+  title: "夢、途中。｜PODCAST",
   description:
     "挑戦する若者の夢や目標を聞き出して、リアルな声を発信するポッドキャスト。",
 };
