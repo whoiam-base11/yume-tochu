@@ -29,6 +29,33 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## メール通知 (Resend)
+
+問い合わせフォーム送信時に、Resend経由でメール通知を送信します。
+
+### セットアップ
+
+1. [Resend](https://resend.com) でアカウントを作成し、APIキーを取得
+2. `.env.local` に以下を設定:
+   ```
+   RESEND_API_KEY=re_xxxxx
+   CONTACT_FROM_EMAIL=onboarding@resend.dev
+   CONTACT_TO_EMAIL=your-email@example.com
+   ```
+
+### テストモードと本番モードの切り替え
+
+| 環境 | `CONTACT_FROM_EMAIL` | 備考 |
+|------|---------------------|------|
+| テスト | `onboarding@resend.dev` | ドメイン認証不要。送信先はResendアカウントのメールのみ |
+| 本番 | `noreply@yourdomain.com` | 要ドメイン認証（DNS MX/TXTレコード追加）。任意のメールに送信可 |
+
+### Vercel環境変数
+
+Vercelダッシュボード → Settings → Environment Variables に `RESEND_API_KEY`、`CONTACT_FROM_EMAIL`、`CONTACT_TO_EMAIL` を設定してください。
+
+> `RESEND_API_KEY` が未設定の場合、メール送信はスキップされ、フォーム送信（Sanity保存）は通常通り動作します。
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

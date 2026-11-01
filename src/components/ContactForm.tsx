@@ -13,12 +13,14 @@ export default function ContactForm() {
   const [reply, setReply] = useState("");
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [hp, setHp] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitting) return;
     const errs: Record<string, boolean> = {};
     if (!name.trim()) errs.name = true;
     if (!reply.trim()) errs.reply = true;
@@ -39,6 +41,7 @@ export default function ContactForm() {
           org: org.trim() || undefined,
           reply: reply.trim(),
           body: body.trim(),
+          _hp: hp,
         }),
       });
 
@@ -242,6 +245,22 @@ export default function ContactForm() {
                     内容を入力してください。
                   </span>
                 )}
+              </div>
+
+              {/* Honeypot */}
+              <div
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px" }}
+              >
+                <label htmlFor="c-hp">Do not fill this field</label>
+                <input
+                  id="c-hp"
+                  name="_hp"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hp}
+                  onChange={(e) => setHp(e.target.value)}
+                />
               </div>
 
               {submitError && (
