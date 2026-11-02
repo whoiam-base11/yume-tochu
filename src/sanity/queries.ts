@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 export const EPISODES_QUERY = defineQuery(
-  `*[_type == "episode"] | order(order asc) {
+  `*[_type == "episode"] | order(order desc) {
     _id,
     name,
     nameRoman,
@@ -24,7 +24,7 @@ export const EPISODES_QUERY = defineQuery(
 );
 
 export const FEATURED_EPISODES_QUERY = defineQuery(
-  `*[_type == "episode" && featured == true] | order(order asc) {
+  `*[_type == "episode" && featured == true] | order(order desc) {
     _id,
     name,
     nameRoman,
