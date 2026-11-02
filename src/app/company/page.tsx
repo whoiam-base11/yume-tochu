@@ -39,7 +39,7 @@ export default function CompanyPage() {
                 alt="代表 平川拓虎"
                 fill
                 sizes="(max-width: 820px) calc(100vw - 40px), 300px"
-                className="object-cover object-[center_55%]"
+                className="object-cover object-[center_55%] scale-[1.2]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               <span className="relative text-cream text-[11px] tracking-[0.2em] font-bold">
