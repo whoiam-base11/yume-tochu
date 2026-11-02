@@ -59,10 +59,10 @@ export default function Header({
           </Link>
 
           <nav className="hidden md:flex items-center gap-5 text-[16px]">
-            <a href="#latest" className="no-underline text-white hover:text-spot">
+            <a href="/#latest" className="no-underline text-white hover:text-spot">
               エピソード
             </a>
-            <a href="#about" className="no-underline text-white hover:text-spot">
+            <a href="/#about" className="no-underline text-white hover:text-spot">
               番組について
             </a>
             <Link href="/company" className="no-underline text-white hover:text-spot">
@@ -131,7 +131,7 @@ export default function Header({
             </button>
 
             <a
-              href="#latest"
+              href="/#latest"
               className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
               onClick={() => setDrawerOpen(false)}
             >
@@ -141,7 +141,7 @@ export default function Header({
             {CATEGORIES.map((cat) => (
               <a
                 key={cat.id}
-                href={`#${cat.id}`}
+                href={`/#${cat.id}`}
                 className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
                 onClick={() => setDrawerOpen(false)}
               >
@@ -150,7 +150,7 @@ export default function Header({
               </a>
             ))}
             <a
-              href="#about"
+              href="/#about"
               className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
               onClick={() => setDrawerOpen(false)}
             >
@@ -158,7 +158,7 @@ export default function Header({
               <span className="text-red tracking-[-0.1em]">›››</span>
             </a>
             <a
-              href="#recruit"
+              href="/#recruit"
               className="flex justify-between py-3.5 px-0.5 border-b border-line no-underline font-bold hover:text-spot"
               onClick={() => setDrawerOpen(false)}
             >
