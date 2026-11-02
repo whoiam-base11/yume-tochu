@@ -63,51 +63,23 @@ export default function Hero({
   }, [pos, go]);
 
   const renderBrandSlide = (key: string) => (
-    <div key={key} className="flex-none w-full h-full relative overflow-hidden flex items-center bg-cream text-navy" aria-hidden={key !== "brand"}>
-      <div className="hero-brand-circle absolute left-1/2 top-1/2 w-[min(1100px,150vw)] aspect-square -translate-x-[58%] -translate-y-1/2 rounded-full border-navy border-r-transparent border-t-transparent opacity-90 pointer-events-none -rotate-[20deg]" />
-      <div className="hero-brand-content relative z-10 w-full mx-auto grid grid-cols-[1.1fr_0.9fr] items-center max-md:grid-cols-1">
-        <div>
-          <h2 className="font-mincho font-extrabold text-[clamp(56px,9vw,112px)] leading-none tracking-[0.02em] m-0 whitespace-nowrap">
-            夢、途中。
-          </h2>
-          <div className="hero-brand-subtitle font-bold text-[clamp(13px,1.5vw,16px)] border-b-spot inline-block">
-            挑戦する若者の、リアルなストーリーを。
-          </div>
-          <div className="hero-brand-label font-medium">
-            YUME, TOCHU.
-          </div>
-          <a
-            className="hero-brand-btn inline-flex items-center bg-navy text-cream font-bold no-underline max-[391px]:hidden"
-            href={SHOW_URL}
-            target="_blank"
-            rel="noopener"
-          >
-            <SpotifyIcon className="hero-brand-btn-icon" />
-            Spotifyで聴く
-          </a>
-        </div>
-        <svg className="hero-brand-svg w-full justify-self-center max-md:absolute max-md:right-[3.5%] max-md:bottom-[6.5%] max-md:max-w-[9vw] max-md:opacity-95" viewBox="0 0 300 300" aria-hidden="true">
-          <polygon points="214,62 236,74 270,290 90,290" fill="#F2CF73" opacity=".85" />
-          <g transform="rotate(28 225 60)">
-            <rect x="208" y="34" width="34" height="46" rx="5" fill="#1D2A4C" />
-            <rect x="221" y="14" width="8" height="22" fill="#1D2A4C" />
-            <ellipse cx="225" cy="82" rx="20" ry="5" fill="#1D2A4C" />
-          </g>
-          <rect x="146" y="150" width="20" height="38" rx="10" fill="#1D2A4C" />
-          <path d="M138 176a18 18 0 0 0 36 0" stroke="#1D2A4C" strokeWidth="5" fill="none" />
-          <rect x="153" y="194" width="6" height="88" fill="#1D2A4C" />
-          <path d="M130 288h52" stroke="#1D2A4C" strokeWidth="6" strokeLinecap="round" />
-        </svg>
-      </div>
-      <a
-        className="hero-brand-btn hidden max-[391px]:inline-flex items-center bg-navy text-cream font-bold no-underline"
-        href={SHOW_URL}
-        target="_blank"
-        rel="noopener"
-      >
-        <SpotifyIcon className="hero-brand-btn-icon" />
-        Spotifyで聴く
-      </a>
+    <div key={key} className="flex-none w-full h-full relative overflow-hidden" aria-hidden={key !== "brand"}>
+      <Image
+        src="/hero.png"
+        alt="夢、途中。- 挑戦する若者の、リアルなストーリーを。"
+        fill
+        className="object-cover object-center max-[391px]:hidden"
+        sizes="100vw"
+        priority
+      />
+      <Image
+        src="/hero_mobile.png"
+        alt="夢、途中。- 挑戦する若者の、リアルなストーリーを。"
+        fill
+        className="hidden max-[391px]:block object-cover object-center"
+        sizes="390px"
+        priority
+      />
     </div>
   );
 
