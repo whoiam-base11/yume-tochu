@@ -23,15 +23,15 @@ export default function EpisodeRow({
 
   return (
     <section className="pt-[34px]" id={id}>
-      <div className="flex items-end justify-between gap-3 mb-3.5 border-b border-line pb-2.5">
-        <h3 className="font-black text-xl m-0 leading-[1.35]">
-          <small className="block text-[11px] font-bold tracking-[0.16em] text-red">
+      <div className="flex items-end justify-between gap-3 mb-3.5 border-b border-line pb-2.5 min-w-0">
+        <h3 className="font-black text-xl max-sm:text-base m-0 leading-[1.35] min-w-0">
+          <small className="block text-[11px] max-sm:text-[10px] font-bold tracking-[0.16em] max-sm:tracking-[0.1em] text-red">
             {english}
           </small>
           {title}
         </h3>
         <button
-          className="text-fg text-[13px] font-bold whitespace-nowrap bg-transparent border-0 cursor-pointer py-1 px-0 hover:text-spot"
+          className="text-fg text-[13px] max-sm:text-[12px] font-bold whitespace-nowrap bg-transparent border-0 cursor-pointer py-1 px-0 hover:text-spot shrink-0"
           onClick={() => setExpanded(!expanded)}
         >
           {expanded ? "閉じる" : "すべて表示"}

@@ -48,7 +48,7 @@ export default function HomeClient({
 
       <Hero featured={featured} onSelect={setSelectedEpisode} />
 
-      <main className="max-w-[1200px] mx-auto px-5 pb-12 pt-2">
+      <main className="max-w-[1200px] w-full mx-auto px-5 pb-12 pt-2 overflow-x-clip">
         {searchResults !== null ? (
           <section className="pt-[34px]">
             <div className="flex items-end justify-between gap-3 mb-3.5 border-b border-line pb-2.5">

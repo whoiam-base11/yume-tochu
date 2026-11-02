@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Search, Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/colors";
+import iconImg from "@/app/icon.png";
 
 const SHOW_URL = "https://open.spotify.com/show/566JMxN11RnYzlPJKBJsdD";
 const INSTAGRAM_URL = "https://www.instagram.com/yume.tochu/";
@@ -44,12 +46,13 @@ export default function Header({
             href="/"
             className="flex items-center gap-2 no-underline mr-auto min-w-0"
           >
-            <span className="w-[26px] h-[26px] rounded-full border-[1.5px] border-fg grid place-items-center flex-none">
-              <svg viewBox="0 0 12 14" className="w-3 h-3.5 fill-fg">
-                <rect x="3" y="0" width="6" height="9" rx="3" />
-                <rect x="5.3" y="9" width="1.4" height="5" />
-              </svg>
-            </span>
+            <Image
+              src={iconImg}
+              alt=""
+              width={26}
+              height={26}
+              className="rounded-full flex-none"
+            />
             <b className="font-mincho font-extrabold text-[22px] whitespace-nowrap">
               夢、途中。
             </b>

@@ -17,6 +17,7 @@
 
 html {
   scroll-padding-top: var(--header-height);
+  overflow-x: clip;
 }
 
 @theme inline {

@@ -33,7 +33,7 @@ export default function CompanyPage() {
             <h1 className="font-mincho font-extrabold text-[clamp(30px,4.2vw,50px)] leading-[1.4] mt-2.5 mb-0 text-balance">
               代表の想い
             </h1>
-            <div className="mt-7 aspect-[4/5] max-w-[300px] bg-navy relative overflow-hidden grid place-items-[end_start] p-[18px] max-[820px]:max-w-none max-[820px]:aspect-[16/7]">
+            <div className="mt-7 aspect-[4/5] max-w-[300px] bg-navy relative overflow-hidden grid place-items-[end_start] p-[18px] max-[820px]:max-w-none max-[820px]:aspect-[4/5]">
               <Image
                 src="/founder.jpg"
                 alt="代表 平川拓虎"
@@ -112,7 +112,7 @@ export default function CompanyPage() {
                 事業内容
               </dt>
               <dd className="m-0 font-medium">
-                <ul className="m-0 pl-[1.2em]">
+                <ul className="m-0 pl-0 list-none">
                   <li>ポッドキャスト「夢、途中。」の企画・制作・配信</li>
                   <li>出演者紹介コンテンツの制作・SNS発信</li>
                 </ul>
